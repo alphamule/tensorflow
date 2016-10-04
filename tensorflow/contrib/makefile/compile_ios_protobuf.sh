@@ -97,33 +97,33 @@ ${LDFLAGS} \
 make -j ${JOBS_COUNT}
 make install
 
-make distclean
-./configure \
---build=x86_64-apple-${OSX_VERSION} \
---host=x86_64-apple-${OSX_VERSION} \
---disable-shared \
---enable-cross-compile \
---with-protoc="${PROTOC_PATH}" \
---prefix=${LIBDIR}/iossim_x86_64 \
---exec-prefix=${LIBDIR}/iossim_x86_64 \
-"CFLAGS=${CFLAGS} \
--mios-simulator-version-min=${MIN_SDK_VERSION} \
--arch x86_64 \
--isysroot ${IPHONESIMULATOR_SYSROOT}" \
-"CXX=${CXX}" \
-"CXXFLAGS=${CXXFLAGS} \
--mios-simulator-version-min=${MIN_SDK_VERSION} \
--arch x86_64 \
--isysroot \
-${IPHONESIMULATOR_SYSROOT}" \
-LDFLAGS="-arch x86_64 \
--mios-simulator-version-min=${MIN_SDK_VERSION} \
-${LDFLAGS} \
--L${IPHONESIMULATOR_SYSROOT}/usr/lib/ \
--L${IPHONESIMULATOR_SYSROOT}/usr/lib/system" \
-"LIBS=${LIBS}"
-make -j ${JOBS_COUNT}
-make install
+# make distclean
+# ./configure \
+# --build=x86_64-apple-${OSX_VERSION} \
+# --host=x86_64-apple-${OSX_VERSION} \
+# --disable-shared \
+# --enable-cross-compile \
+# --with-protoc="${PROTOC_PATH}" \
+# --prefix=${LIBDIR}/iossim_x86_64 \
+# --exec-prefix=${LIBDIR}/iossim_x86_64 \
+# "CFLAGS=${CFLAGS} \
+# -mios-simulator-version-min=${MIN_SDK_VERSION} \
+# -arch x86_64 \
+# -isysroot ${IPHONESIMULATOR_SYSROOT}" \
+# "CXX=${CXX}" \
+# "CXXFLAGS=${CXXFLAGS} \
+# -mios-simulator-version-min=${MIN_SDK_VERSION} \
+# -arch x86_64 \
+# -isysroot \
+# ${IPHONESIMULATOR_SYSROOT}" \
+# LDFLAGS="-arch x86_64 \
+# -mios-simulator-version-min=${MIN_SDK_VERSION} \
+# ${LDFLAGS} \
+# -L${IPHONESIMULATOR_SYSROOT}/usr/lib/ \
+# -L${IPHONESIMULATOR_SYSROOT}/usr/lib/system" \
+# "LIBS=${LIBS}"
+# make -j ${JOBS_COUNT}
+# make install
 
 make distclean
 ./configure \
@@ -198,7 +198,6 @@ make install
 
 lipo \
 ${LIBDIR}/iossim_386/lib/libprotobuf.a \
-${LIBDIR}/iossim_x86_64/lib/libprotobuf.a \
 ${LIBDIR}/ios_arm7/lib/libprotobuf.a \
 ${LIBDIR}/ios_arm7s/lib/libprotobuf.a \
 ${LIBDIR}/ios_arm64/lib/libprotobuf.a \
@@ -207,7 +206,6 @@ ${LIBDIR}/ios_arm64/lib/libprotobuf.a \
 
 lipo \
 ${LIBDIR}/iossim_386/lib/libprotobuf-lite.a \
-${LIBDIR}/iossim_x86_64/lib/libprotobuf-lite.a \
 ${LIBDIR}/ios_arm7/lib/libprotobuf-lite.a \
 ${LIBDIR}/ios_arm7s/lib/libprotobuf-lite.a \
 ${LIBDIR}/ios_arm64/lib/libprotobuf-lite.a \
